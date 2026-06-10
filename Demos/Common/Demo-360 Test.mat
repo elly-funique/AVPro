@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Demo-360 Test
+  m_Shader: {fileID: 4800000, guid: ba16d2038043d7c4ab8ccf4861155b4c, type: 3}
+  m_ValidKeywords:
+  - ANDROID
+  - APPLY_GRID
+  - FILTER_POINT
+  - FORCEEYE_NONE
+  m_InvalidKeywords:
+  - LAYOUT_NONE
+  - MASK_NONE
+  - STEREO_NONE
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _ChromaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 4d4778b90a2d0a642a3063245427de28, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Noise:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OG:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Overlay:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _UV:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _UVShift:
+        m_Texture: {fileID: 2800000, guid: db84fea6af9d7474f9e10722f129871e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - AlphaPack: 0
+    - FILTER: 0
+    - ForceEye: 0
+    - Layout: 0
+    - Mask: 0
+    - Stereo: 0
+    - _Android: 1
+    - _ApplyGamma: 0
+    - _ApplyGrid: 1
+    - _ApplyLinear: 0
+    - _Custom_AA: 0
+    - _DEFAULTUV: 0
+    - _EdgeDetect: 0
+    - _EdgeFeather: 0.02
+    - _HashHeight: 720
+    - _HashWidth: 1280
+    - _HighQuality: 0
+    - _Offset: 0
+    - _Padding: 0
+    - _Seed: 1280
+    - _Shift: 1
+    - _StereoDebug: 0
+    - _UUV: 0
+    - _UseYpCbCr: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _GridGap: {r: 20, g: 10, b: 0.85, a: -7.2}
+  m_BuildTextureStacks: []

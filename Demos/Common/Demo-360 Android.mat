@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Demo-360 Android
+  m_Shader: {fileID: 4800000, guid: 42b6306eb7499424f996f2885c5800c8, type: 3}
+  m_ValidKeywords:
+  - FORCEEYE_NONE
+  - STEREO_CUSTOM_UV
+  m_InvalidKeywords:
+  - LAYOUT_NONE
+  - MASK_NONE
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _ChromaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: e6c46216a11b8eb489ce783a8b488b4a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Overlay:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - ForceEye: 0
+    - Layout: 0
+    - Mask: 0
+    - Stereo: 3
+    - _Android: 0
+    - _ApplyGamma: 0
+    - _ApplyGrid: 0
+    - _Custom_AA: 0
+    - _DefaultTexture: 0
+    - _HighQuality: 0
+    - _Offset: 0
+    - _Padding: 0
+    - _StereoDebug: 0
+    - _UseYpCbCr: 0
+    m_Colors:
+    - _Color: {r: 0, g: 1, b: 0, a: 1}
+  m_BuildTextureStacks: []

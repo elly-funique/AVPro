@@ -1,0 +1,61 @@
+﻿#pragma kernel CSMain
+
+RWTexture2D<float4> inRTexture;
+RWTexture2D<float4> outRTexture;
+
+int inWidth;
+int inHeight;
+int outWidth;
+int outHeight;
+
+[numthreads(16, 16, 1)]
+void CSMain(uint3 id : SV_DispatchThreadID)
+{
+	int w = inWidth / 4;
+	int h = inHeight / 3;
+	
+	/*
+	if (id.x < w * 3 && id.y < h * 2)
+		outRTexture[id.xy] = inRTexture[id.xy];
+	else if (id.x < w * 3 && id.y == h * 2)
+		outRTexture[id.xy] = inRTexture[id.xy + float2(0, -1)];
+	else if (id.x == 0 && id.y >= inHeight)
+		outRTexture[id.xy] = inRTexture[id.xy + float2(w * 3 + 1, -inHeight)];
+	else if (id.x < w && id.y >= inHeight)
+		outRTexture[id.xy] = inRTexture[id.xy + float2(w * 3, -inHeight)];
+	else if (id.x == w && id.x < w * 2 && id.y >= inHeight)
+		outRTexture[id.xy] = inRTexture[id.xy + float2(w * 2 + 1, -h * 2)]; 
+	else if (id.x > w  && id.x < w * 2 && id.y >= inHeight)
+		outRTexture[id.xy] = inRTexture[id.xy + float2(w * 2, -h * 2)];
+	else if (id.x == w * 2 && id.y >= inHeight)
+		outRTexture[id.xy] = inRTexture[id.xy + float2(w + 1, -h)]; 
+	else if (id.x >= w * 2  && id.y >= inHeight)
+		outRTexture[id.xy] = inRTexture[id.xy + float2(w, -h)];
+	*/
+
+	uint2 outuv;
+	uint2 inShift = uint2(0, 0);
+	if (id.x < w * 3 && id.y < h * 3) { outuv = id.xy; } // left
+	else if (id.x >= w * 3 && id.y >= h * 2 )  // right
+	{ 
+		if(id.x < w * 3 + 1) // right left
+		{
+			inShift.x += 1;
+		}
+		outuv = id.xy + float2(-w, h - 1); 
+	} 
+	else if (id.x >= w * 3 && id.y < h) // left
+	{
+		outuv = id.xy + float2(-w * 3, h * 3 - 1); 
+	} 
+	else if (id.x >= w * 3 && id.y >= h && id.y < h * 2) // center
+	{ 
+		if(id.x < w * 3 + 2) // center left
+		{
+			inShift.x += 1;
+		}
+		outuv = id.xy + float2(-w * 2, h * 2 - 1); 
+	} 
+	//outuv.xy = clamp(outuv, uint2(0, 0), uint2(outWidth, outHeight));
+	outRTexture[outuv.xy] = inRTexture[id.xy + inShift];
+}

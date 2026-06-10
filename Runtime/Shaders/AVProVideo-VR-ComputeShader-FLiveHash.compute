@@ -1,0 +1,50 @@
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel CSMain
+
+const float hw = 12.0;
+const float hh = 6.0;
+static const int map[72] = { 18,49,33,25,16,64,15,3,23,35,30,14,71,27,68,1,8,57,11,39,26,45,24,42,10,47,60,4,34,48,41,51,9,67,22,28,63,56,6,72,54,17,62,55,38,2,59,40,69,50,32,20,43,44,61,52,7,70,5,13,66,58,53,31,36,29,46,65,21,37,12,19 };
+static const float4 uCrop[2] = { float4(3840, 0, 0, 0), float4(0, 0, 3840, 0) };
+static const float2 uPos[2] = { float2(3840, 0), float2(-3840, 0) };
+
+// Create a RenderTexture with enableRandomWrite flag and set it
+// with cs.SetTexture
+int Width;
+int Height;
+Texture2D<float4> Input_Sampler;
+RWTexture2D<float4> Result;
+
+float2 Flive_UV(float2 uv) {
+	// The local length of each grid element, range [0, 1]
+	float2 local_uv = float2(frac(uv * float2(hw, hh)));
+	// For example, 13 is selected
+	// p = (0, 1), range [0-11] [0-5]
+	float2 p = float2(int(uv.x * hw), int(uv.y * hh));
+	// length of single grid
+	float2 leng = float2(1.0 / hw, 1.0 / hh);
+	// index = 12, index is start from 0
+	int index = (p.y * int(hw) + p.x);
+	// 0 is just the initial value
+	int select_k = 0;
+	for (int k = 0; k < 72; k++) {
+		if (map[k] - 1 == index) {
+			select_k = k;
+			break;
+		}
+	}
+	// Trying to convert index value to position vector2
+	float2 tp = float2(float(select_k) % hw, int(float(select_k) / hw));
+	//return vec2(float(p.x) * leng.x, float(p.y) * leng.y) + (local_uv * leng);
+	return float2(float(tp.x) * leng.x, float(tp.y) * leng.y) + (local_uv * leng);
+}
+
+
+[numthreads(8,8,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+	float2 uv = float2(id.xy) / float2(Width, Height);
+
+    // TODO: insert actual code here!
+	//Result[id.xy] = Input_Sampler[Flive_UV(uv)];
+	Result[id.xy] = float4(1.0, 1.0, 1.0, 1.0);
+}
